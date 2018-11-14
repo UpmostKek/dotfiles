@@ -1,0 +1,7 @@
+opacity-rule = [
+  "85:class_g = 'URxvt'",
+  "85:class_g = 'Slack'",
+  "85:class_g = 'zathura'",
+  "85:class_g = 'qutebrowser'"
+]
+
