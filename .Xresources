@@ -1,0 +1,10 @@
+! Rofi Settings
+
+rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
+
+! URxvt Settings
+
+URxvt.scrollBar: none
+URxvt.internalBorder: 30
+URxvt.font: xft: Fira Mono:pixelsize=12
+
