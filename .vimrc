@@ -1,56 +1,82 @@
-" General Settings
+" ~/.vimrc
+" Contains Vim configuration options
 
-set nowrap                               " Disables line wrapping
-set noruler                              " Disables the ruler
-set visualbell                           " Disables beeping sound
-set ignorecase                           " Disables case-sensitive searches
+" Autocmd {{{
+autocmd BufWritePre * :%s/\s\+$//e
+autocmd VimEnter * set indentexpr=
+" }}}
+" Folding {{{
 
-syntax on                                " Enables syntax highlighting
+set foldenable
+set foldlevelstart=99
+set foldmethod=indent
 
-set expandtab                            " Converts tabs to spaces
-set tabstop=2                            " Sets the tab width
-set shiftwidth=2                         " Sets the shift width
+" }}}
+" Miscellaneous {{{
 
-set viminfo=                             " Disables writing to viminfo files
-set nobackup                             " Disables writing to backup files
-set noswapfile                           " Disables writing to swap files
-set noundofile                           " Disables writing to undo files
-set nowritebackup                        " Disables writing to backup files
+set backspace=indent,eol,start
+set cm=blowfish2
+set encoding=UTF-8
 
-set encoding=UTF-8                       " Enables editing in UTF-8
-set backspace=indent,eol,start           " Deletes to EOL
-set cm=blowfish2                         " Sets the algorithm used when
-                                         " encrypting files
+" }}}
+" Plugins {{{
 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
 
-" Miscellaneous Settings
+Plugin 'dbeniamine/cheat.sh-vim'
+Plugin 'dylanaraps/wal.vim'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+  autocmd! User GoyoEnter Limelight
+  autocmd! User GoyoLeave Limelight!
+  let g:limelight_conceal_ctermfg = 'gray'
 
-autocmd BufWritePre * :%s/\s\+$//e       " Deletes trailing whitespace on save
-autocmd VimEnter * set indentexpr=       " Disables unwanted unindentation
+Plugin 'scrooloose/nerdtree'
+  let g:NERDTreeDirArrowExpandable = '>'
+  let g:NERDTreeDirArrowCollapsible = 'v'
 
+Plugin 'scrooloose/syntastic'
 
+call vundle#end()
+filetype plugin indent on
 
-" Plugins
+" }}}
+" Searching {{{
 
-call plug#begin('~/.vim/plugged')        " Specifies the plugin directory
+set ignorecase
+set incsearch
 
-Plug 'junegunn/goyo.vim'                 " Adds a 'focused mode'
-Plug 'scrooloose/syntastic'              " Adds syntax highlighting
-Plug 'junegunn/limelight.vim'            " Highlights only the paragraph being
-Plug 'dbeniamine/cheat.sh-vim'           " Enables cht.sh support
-                                         " edited
+" }}}
+" Tabs {{{
 
-call plug#end()                          " Initializes the plugin system
+set expandtab
+set tabstop=4
+set shiftwidth=4
 
+" }}}
+" Temporary Files {{{
 
+set nobackup
+set noswapfile
+set noundofile
+set nowritebackup
+set viminfo=
 
-" Plugin Settings
+" }}}
+" UI {{{
 
-" limelight.vim
-autocmd! User GoyoEnter Limelight        " Enables limelight when goyo is
-                                         " active
-autocmd! User GoyoLeave Limelight!       " Disables limelight when goyo is
-                                         " inactive
-let g:limelight_conceal_ctermfg = 'gray' " Colors unhighlighted paragraphs gray
+colorscheme wal
+set lazyredraw
+set nowrap
+set number
+set ruler
+set visualbell
+set wildmenu
+syntax on
 
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0
