@@ -1,4 +1,3 @@
-# vim: filetype=i3
 # i3 config file (v4)
 #
 #  _ _____                    __ _
@@ -12,208 +11,212 @@
 # GitHub: https://github.com/UpmostKek
 # BitBucket: https://bitbucket.org/UpmostKek
 
+# Variables {{{
 
+    # Variables: Applications {{{
 
-###############
-# <Variables> #
-###############
+        set $editor vim
+        set $sandbox firejail
+        set $terminal urxvt
 
-# Variables: Applications
+    # }}}
 
-set $editor vim
-set $sandbox firejail
-set $terminal urxvt
+    # Variables: Colors {{{
 
-# Variables: Colors
+        set_from_resource $color0 i3wm.color0
+        set_from_resource $color1 i3wm.color1
+        set_from_resource $color2 i3wm.color2
+        set_from_resource $color3 i3wm.color3
+        set_from_resource $color4 i3wm.color4
+        set_from_resource $color5 i3wm.color5
+        set_from_resource $color6 i3wm.color6
+        set_from_resource $color7 i3wm.color7
+        set_from_resource $color8 i3wm.color8
+        set_from_resource $color9 i3wm.color9
+        set_from_resource $color10 i3wm.color10
+        set_from_resource $color11 i3wm.color11
+        set_from_resource $color12 i3wm.color12
+        set_from_resource $color13 i3wm.color13
+        set_from_resource $color14 i3wm.color14
+        set_from_resource $color15 i3wm.color15
 
-set_from_resource $color0 i3wm.color0
-set_from_resource $color1 i3wm.color1
-set_from_resource $color2 i3wm.color2
-set_from_resource $color3 i3wm.color3
-set_from_resource $color4 i3wm.color4
-set_from_resource $color5 i3wm.color5
-set_from_resource $color6 i3wm.color6
-set_from_resource $color7 i3wm.color7
-set_from_resource $color8 i3wm.color8
-set_from_resource $color9 i3wm.color9
-set_from_resource $color10 i3wm.color10
-set_from_resource $color11 i3wm.color11
-set_from_resource $color12 i3wm.color12
-set_from_resource $color13 i3wm.color13
-set_from_resource $color14 i3wm.color14
-set_from_resource $color15 i3wm.color15
+    # }}}
 
+    # Variables: Modifiers {{{
 
-# Variables: Modifiers
+        set $mod1 Mod4
+        set $mod2 Shift
 
-set $mod1 Mod4
-set $mod2 Shift
+    # }}}
 
-# Variables: Workspaces
+    # Variables: Wallpaper {{{
 
-set $workspace1 1
-set $workspace2 2
-set $workspace3 3
-set $workspace4 4
+        set $wallpaper ~/.config/wallpaper.png
 
-################
-# </Variables> #
-################
+    # }}}
 
+    # Variables: Workspaces {{{
 
+        set $workspace1 1
+        set $workspace2 2
+        set $workspace3 3
+        set $workspace4 4
 
-##########
-# <Bars> #
-##########
+    # }}}
 
-# Bars: Main Bar
-bar {
-  position top
-  status_command i3status
+# }}}
 
-  colors {
-    separator $color11
-    background $color0
-    statusline $color14
-    focused_workspace $color0 $color0 $color14
-    urgent_workspace $color0 $color0 $color11
-    inactive_workspace $color0 $color0 $color11
-  }
-}
+# Bars {{{
 
-###########
-# </Bars> #
-###########
+    # Bars: Main Bar {{{
 
+        bar {
+            position top
+            status_command i3status
 
+        colors {
+                separator $color11
+                background $color0
+                statusline $color14
+                focused_workspace $color0 $color0 $color14
+                urgent_workspace $color0 $color0 $color11
+                inactive_workspace $color0 $color0 $color11
+            }
+        }
 
-################
-# <Decoration> #
-################
+    # }}}
 
-# Decoration: Fonts
+# }}}
 
-font pango: Fira Mono 8
+# Decoration {{{
 
-# Decoration: Gaps
+    # Decoration: Fonts {{{
 
-gaps inner 10
+        font pango: Fira Mono 8
 
-# Decoration: Titlebars
+    # }}}
 
-for_window [class="^.*"] border pixel 0
+    # Decoration: Gaps {{{
 
-#################
-# </Decoration> #
-#################
+        gaps inner 10
 
+    # }}}
 
+    # Decoration: Titlebars {{{
 
-#################
-# <Keybindings> #
-#################
+        for_window [class="^.*"] border pixel 0
 
-# Keybindings: Applications
+    # }}}
 
-bindsym $mod1+b exec --no-startup-id firejail --whitelist=~/downloads --whitelist=~/pictures qutebrowser
-bindsym $mod1+c exec --no-startup-id $terminal -e weechat
-bindsym $mod1+f exec --no-startup-id $terminal -e ranger
-bindsym $mod1+i exec --no-startup-id $terminal -e $editor ~/.config/i3/config
-bindsym $mod1+m exec --no-startup-id $terminal -e ncmpcpp
-bindsym $mod1+n exec --no-startup-id $terminal -e $editor ~/notes/notepad.txt
-bindsym $mod1+p exec --no-startup-id $terminal -e pulsemixer
-bindsym $mod1+r exec --no-startup-id rofi -show run
-bindsym $mod1+s exec --no-startup-id slack
-bindsym $mod1+t exec --no-startup-id $terminal
-bindsym $mod1+v exec --no-startup-id $terminal -e $editor ~/.vimrc
+# }}}
 
-# Keybindings: I3 Management
+# Keybindings {{{
 
-bindsym $mod1+$mod2+e exit
-bindsym $mod1+$mod2+l exec --no-startup-id betterlockscreen -l dimblur
-bindsym $mod1+$mod2+r reload
-bindsym $mod1+$mod2+p exec shutdown now
+    # Keybindings: Applications {{{
 
-# Keybindings: Media Keys
+        bindsym $mod1+b exec --no-startup-id firejail --whitelist=~/downloads --whitelist=~/pictures qutebrowser
+        bindsym $mod1+c exec --no-startup-id $terminal -e weechat
+        bindsym $mod1+f exec --no-startup-id $terminal -e ranger
+        bindsym $mod1+i exec --no-startup-id $terminal -e $editor ~/.config/i3/config
+        bindsym $mod1+m exec --no-startup-id $terminal -e ncmpcpp
+        bindsym $mod1+n exec --no-startup-id $terminal -e $editor -c :Goyo ~/notes/notepad.txt
+        bindsym $mod1+p exec --no-startup-id $terminal -e pulsemixer
+        bindsym $mod1+r exec --no-startup-id rofi -show run
+        bindsym $mod1+s exec --no-startup-id slack
+        bindsym $mod1+t exec --no-startup-id $terminal
+        bindsym $mod1+v exec --no-startup-id $terminal -e $editor ~/.vimrc
 
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+    # }}}
 
-# Keybindings: Modes
+    # Keybindings: I3 Management {{{
 
-bindsym $mod1+$mod2+d mode "resize"
+        bindsym $mod1+$mod2+e exit
+        bindsym $mod1+$mod2+l exec --no-startup-id betterlockscreen -l dimblur
+        bindsym $mod1+$mod2+r reload
+        bindsym $mod1+$mod2+p exec shutdown now
 
-# Keybindings: Window Management
+    # }}}
 
-bindsym $mod1+$mod2+f fullscreen
-bindsym $mod1+$mod2+s split toggle
-bindsym $mod1+$mod2+q kill
+    # Keybindings: Media Keys {{{
 
-bindsym $mod1+Space focus mode_toggle
-bindsym $mod1+$mod2+Space floating toggle
+        bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+        bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+        bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 
-bindsym $mod1+Up focus up
-bindsym $mod1+Left focus left
-bindsym $mod1+Down focus down
-bindsym $mod1+Right focus right
+    # }}}
 
-bindsym $mod1+$mod2+Up move up
-bindsym $mod1+$mod2+Left move left
-bindsym $mod1+$mod2+Down move down
-bindsym $mod1+$mod2+Right move right
+    # Keybindings: Modes {{{
 
-bindsym $mod1+1 workspace $workspace1
-bindsym $mod1+2 workspace $workspace2
-bindsym $mod1+3 workspace $workspace3
-bindsym $mod1+4 workspace $workspace4
+        bindsym $mod1+$mod2+d mode "resize"
 
-bindsym $mod1+$mod2+1 move container to workspace $workspace1
-bindsym $mod1+$mod2+2 move container to workspace $workspace2
-bindsym $mod1+$mod2+3 move container to workspace $workspace3
-bindsym $mod1+$mod2+4 move container to workspace $workspace4
+    # }}}
 
-##################
-# </Keybindings> #
-##################
+    # Keybindings: Window Management {{{
 
+        bindsym $mod1+$mod2+f fullscreen
+        bindsym $mod1+$mod2+s split toggle
+        bindsym $mod1+$mod2+q kill
 
+        bindsym $mod1+Space focus mode_toggle
+        bindsym $mod1+$mod2+Space floating toggle
 
-###########
-# <Modes> #
-###########
+        bindsym $mod1+Up focus up
+        bindsym $mod1+Left focus left
+        bindsym $mod1+Down focus down
+        bindsym $mod1+Right focus right
 
-# Modes: Resize
+        bindsym $mod1+$mod2+Up move up
+        bindsym $mod1+$mod2+Left move left
+        bindsym $mod1+$mod2+Down move down
+        bindsym $mod1+$mod2+Right move right
 
-mode "resize" {
-    bindsym Up resize shrink height 10 px
-    bindsym Left resize shrink width 10 px
-    bindsym Down resize grow height 10 px
-    bindsym Right resize grow width 10 px
+        bindsym $mod1+1 workspace $workspace1
+        bindsym $mod1+2 workspace $workspace2
+        bindsym $mod1+3 workspace $workspace3
+        bindsym $mod1+4 workspace $workspace4
 
-    bindsym Escape mode "default"
-}
+        bindsym $mod1+$mod2+1 move container to workspace $workspace1
+        bindsym $mod1+$mod2+2 move container to workspace $workspace2
+        bindsym $mod1+$mod2+3 move container to workspace $workspace3
+        bindsym $mod1+$mod2+4 move container to workspace $workspace4
 
-############
-# </Modes> #
-############
+    # }}}
 
+# }}}
 
+# Modes {{{
 
-#############
-# <Startup> #
-#############
+    # Modes: Resize {{{
 
-# Startup: Always
-exec_always --no-startup-id wal -i ~/.config/wallpaper.jpg
-exec_always --no-startup-id betterlockscreen -u ~/.config/wallpaper.jpg
+        mode "resize" {
+            bindsym Up resize shrink height 10 px
+            bindsym Left resize shrink width 10 px
+            bindsym Down resize grow height 10 px
+            bindsym Right resize grow width 10 px
 
-# Startup: On Boot
-exec --no-startup-id compton -bcCGf --config ~/.config/compton/config
+            bindsym Escape mode "default"
+        }
 
-##############
-# </Startup> #
-##############
+    # }}}
 
-# vim: filetype=i3
+# }}}
 
+# Startup {{{
+
+    # Startup: Always {{{
+
+        exec_always --no-startup-id mpc clear
+        exec_always --no-startup-id wal -i $wallpaper
+        exec_always --no-startup-id betterlockscreen -u $wallpaper
+
+    # }}}
+
+    # Startup: On Boot {{{
+
+        exec --no-startup-id compton -bcCGf --config ~/.config/compton/config
+
+    # }}}
+
+# }}}
+
+# vim: filetype=i3:foldmethod=marker:foldlevel=0
