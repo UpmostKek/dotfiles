@@ -3,8 +3,18 @@
 
 " Autocmd {{{
 
-    autocmd BufWritePre * :%s/\s\+$//e
-    autocmd VimEnter * set indentexpr=
+    augroup General
+        au!
+        autocmd BufWritePre * :%s/\s\+$//e
+        autocmd VimEnter * set indentexpr=
+    augroup END
+
+" }}}
+
+" Encoding {{{
+
+    scriptencoding utf-8
+    set encoding=utf-8
 
 " }}}
 
@@ -19,8 +29,7 @@
 " Miscellaneous {{{
 
     set backspace=indent,eol,start
-    set cm=blowfish2
-    set encoding=UTF-8
+    "set cm=blowfish2
 
 " }}}
 
@@ -31,14 +40,9 @@
 
     Plugin 'VundleVim/Vundle.vim'
 
-    Plugin 'dbeniamine/cheat.sh-vim'
     Plugin 'dylanaraps/wal.vim'
     Plugin 'junegunn/goyo.vim'
-    Plugin 'junegunn/limelight.vim'
-        autocmd! User GoyoEnter Limelight
-        autocmd! User GoyoLeave Limelight!
-        let g:limelight_conceal_ctermfg = 'gray'
-
+    Plugin 'mboughaba/i3config.vim'
     Plugin 'scrooloose/nerdtree'
         let g:NERDTreeDirArrowExpandable = '>'
         let g:NERDTreeDirArrowCollapsible = 'v'

@@ -51,7 +51,7 @@
 
     # Variables: Wallpaper {{{
 
-        set $wallpaper ~/.config/wallpaper.png
+        set $wallpaper ~/.config/wallpaper.jpg
 
     # }}}
 
@@ -61,6 +61,12 @@
         set $workspace2 2
         set $workspace3 3
         set $workspace4 4
+        set $workspace5 5
+        set $workspace6 6
+        set $workspace7 7
+        set $workspace8 8
+        set $workspace9 9
+        set $workspace10 10
 
     # }}}
 
@@ -98,7 +104,7 @@
 
     # Decoration: Gaps {{{
 
-        gaps inner 10
+        gaps inner 20
 
     # }}}
 
@@ -114,17 +120,19 @@
 
     # Keybindings: Applications {{{
 
+        bindsym $mod1+a exec --no-startup-id anki
         bindsym $mod1+b exec --no-startup-id firejail --whitelist=~/downloads --whitelist=~/pictures qutebrowser
         bindsym $mod1+c exec --no-startup-id $terminal -e weechat
         bindsym $mod1+f exec --no-startup-id $terminal -e ranger
         bindsym $mod1+i exec --no-startup-id $terminal -e $editor ~/.config/i3/config
+        bindsym $mod1+l exec --no-startup-id $terminal -e canto-curses
         bindsym $mod1+m exec --no-startup-id $terminal -e ncmpcpp
         bindsym $mod1+n exec --no-startup-id $terminal -e $editor -c :Goyo ~/notes/notepad.txt
         bindsym $mod1+p exec --no-startup-id $terminal -e pulsemixer
         bindsym $mod1+r exec --no-startup-id rofi -show run
-        bindsym $mod1+s exec --no-startup-id slack
         bindsym $mod1+t exec --no-startup-id $terminal
         bindsym $mod1+v exec --no-startup-id $terminal -e $editor ~/.vimrc
+        bindsym $mod1+y exec --no-startup-id $terminal -e mpsyt
 
     # }}}
 
@@ -132,7 +140,7 @@
 
         bindsym $mod1+$mod2+e exit
         bindsym $mod1+$mod2+l exec --no-startup-id betterlockscreen -l dimblur
-        bindsym $mod1+$mod2+r reload
+        bindsym $mod1+$mod2+r restart
         bindsym $mod1+$mod2+p exec shutdown now
 
     # }}}
@@ -157,8 +165,8 @@
         bindsym $mod1+$mod2+s split toggle
         bindsym $mod1+$mod2+q kill
 
-        bindsym $mod1+Space focus mode_toggle
-        bindsym $mod1+$mod2+Space floating toggle
+        bindsym $mod1+space focus mode_toggle
+        bindsym $mod1+$mod2+space floating toggle
 
         bindsym $mod1+Up focus up
         bindsym $mod1+Left focus left
@@ -174,11 +182,23 @@
         bindsym $mod1+2 workspace $workspace2
         bindsym $mod1+3 workspace $workspace3
         bindsym $mod1+4 workspace $workspace4
+        bindsym $mod1+5 workspace $workspace5
+        bindsym $mod1+6 workspace $workspace6
+        bindsym $mod1+7 workspace $workspace7
+        bindsym $mod1+8 workspace $workspace8
+        bindsym $mod1+9 workspace $workspace9
+        bindsym $mod1+0 workspace $workspace10
 
         bindsym $mod1+$mod2+1 move container to workspace $workspace1
         bindsym $mod1+$mod2+2 move container to workspace $workspace2
         bindsym $mod1+$mod2+3 move container to workspace $workspace3
         bindsym $mod1+$mod2+4 move container to workspace $workspace4
+        bindsym $mod1+$mod2+5 move container to workspace $workspace5
+        bindsym $mod1+$mod2+6 move container to workspace $workspace6
+        bindsym $mod1+$mod2+7 move container to workspace $workspace7
+        bindsym $mod1+$mod2+8 move container to workspace $workspace8
+        bindsym $mod1+$mod2+9 move container to workspace $workspace9
+        bindsym $mod1+$mod2+0 move container to workspace $workspace10
 
     # }}}
 
@@ -213,10 +233,11 @@
 
     # Startup: On Boot {{{
 
+        exec --no-startup-id setxkbmap -option caps:swapescape
         exec --no-startup-id compton -bcCGf --config ~/.config/compton/config
 
     # }}}
 
 # }}}
 
-# vim: filetype=i3:foldmethod=marker:foldlevel=0
+# vim: filetype=i3config:foldmethod=marker:foldlevel=0

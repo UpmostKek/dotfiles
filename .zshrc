@@ -17,10 +17,10 @@ alias "mkdir"="mkdir -pv"
 alias "p"="sudo pacman"
 alias "r"="ranger"
 alias "rm"="srm"
-alias "s"="systemctl"
+alias "ss"="sudo systemctl"
 alias "top"="htop"
 alias "v"="vim"
+alias "y"="yay"
 
 # Set shell prompt
 export PS1="> %B%n%b > [%~]: "
-
